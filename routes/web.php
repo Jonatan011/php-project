@@ -31,3 +31,8 @@ Route::delete('/posts/{post}', function (Post $post) {
     $post->delete();
     return redirect('/posts');
 });
+
+
+Route::get('/favicon.ico', function() {
+    return response()->noContent();
+});

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
-        // Definir los campos que se pueden asignar masivamente
+
+    // Definir las columnas que pueden ser llenadas
     protected $fillable = ['title', 'body'];
 }

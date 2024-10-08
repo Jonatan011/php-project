@@ -1,25 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listado de Posts</title>
+    <title>Posts</title>
 </head>
 <body>
-    <h1>Listado de Posts</h1>
-    <ul id="posts"></ul>
+    <h1>Lista de Posts</h1>
 
-    <script>
-        fetch('/api/posts')
-            .then(response => response.json())
-            .then(data => {
-                const postsList = document.getElementById('posts');
-                data.forEach(post => {
-                    const listItem = document.createElement('li');
-                    listItem.textContent = post.title;
-                    postsList.appendChild(listItem);
-                });
-            });
-    </script>
+    <a href="/posts/create">Crear un nuevo post</a>
+
+    <ul>
+        @foreach($posts as $post)
+            <li>
+                <strong>{{ $post->title }}</strong><br>
+                {{ $post->body }}<br>
+                <a href="/posts/{{ $post->id }}/edit">Editar</a>
+
+                <form action="/posts/{{ $post->id }}" method="POST" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">Eliminar</button>
+                </form>
+            </li>
+        @endforeach
+    </ul>
 </body>
 </html>

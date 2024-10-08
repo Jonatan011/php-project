@@ -1,9 +1,8 @@
 {
     "private": true,
-"scripts": {
-  "postinstall": "composer install --no-dev --optimize-autoloader && php artisan key:generate && php artisan config:cache && php artisan route:cache",
-  "dev": "vite",
-  "build": "npm run postinstall && vite build"
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
     },
     "devDependencies": {
         "@popperjs/core": "^2.11.6",
